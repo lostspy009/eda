@@ -1,0 +1,16 @@
+---
+- name: Monitor /tmp/filename for modifications
+  hosts: localhost
+  sources:
+    - name: Monitor file changes
+      type: ansible.eda.file
+      config:
+        path: /tmp/filename
+        events:
+          - modify
+  rules:
+    - name: Trigger playbook on file modification
+      condition: event.type == 'modify'
+      actions:
+        - run_playbook:
+            name: playbook.yml

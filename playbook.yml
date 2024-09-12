@@ -1,0 +1,7 @@
+---
+- name: Sample Playbook
+  hosts: localhost
+  tasks:
+    - name: Print a message
+      debug:
+        msg: "The file /tmp/filename has been modified."
