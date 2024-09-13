@@ -32,7 +32,7 @@
       delegate_to: localhost
 
     - name: Print all data
-      debug:
+      anisble.builtin.debug:
         msg:
           - "{{ disk_space_output.stdout_lines }}"
           - "{{ system_load_output.stdout_lines }}"
