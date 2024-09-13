@@ -7,7 +7,6 @@
       debug:
         msg: "Hello World from Ansible Event Driven Automation"
         current_time: "{{ ansible_date_time.iso8601 }}"
-        server_ip: "{{ ansible_default_ipv4['address'] }}"
         cpu_cores: "{{ ansible_processor_vcpus }}"
         memory_gb: "{{ ansible_memtotal_mb / 1024 }}"
       delegate_to: localhost
