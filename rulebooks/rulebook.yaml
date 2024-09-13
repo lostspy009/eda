@@ -1,11 +1,11 @@
-- name: Checking the rulebook functionality
+- name: "Checking the rulebook functionality"
   hosts: localhost
   sources:
-    - name: eda tick
+    - name: "eda tick"
       ansible.eda.tick:
         deploy: 5
   rules:
-    - name: Say Hello
+    - name: "Say Hello"
       condition: true
       actions:
         run_job_template:
