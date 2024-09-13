@@ -1,16 +1,14 @@
 ---
-- name: Monitor /tmp/filename for modifications
+- name: Checking the rulebook functionality
   hosts: localhost
   sources:
-    - name: Monitor file changes
-      type: ansible.eda.file
-      config:
-        path: /tmp/filename
-        events:
-          - modify
+    - name: eda tick
+      ansible.eda.tick:
+        deploy: 5
   rules:
-    - name: Trigger playbook on file modification
-      condition: event.type == 'modify'
+    - name: Say Hello
+      condition: true
       actions:
-        - run_playbook:
-            name: playbook.yml
+        run_job_template:
+            name: "Hello World"
+            organization: "Default"
