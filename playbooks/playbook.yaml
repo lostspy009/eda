@@ -4,29 +4,9 @@
   gather_facts: true
   tasks:
     - name: Print a message
-      debug:
+      ansible.builtin.debug:
         msg: "Hello World from Ansible Event Driven Automation"
         current_time: "{{ ansible_date_time.iso8601 }}"
         cpu_cores: "{{ ansible_processor_vcpus }}"
         memory_gb: "{{ ansible_memtotal_mb / 1024 }}"
-      delegate_to: localhost
-
-    - name: Fetch disk space
-      ansible.builtin.shell: df -h
-      register: disk_space_output
-      delegate_to: localhost
-
-    - name: Fetch system load
-      ansible.builtin.shell: uptime
-      register: system_load_output
-      delegate_to: localhost
-
-    - name: Fetch network interfaces
-      ansible.builtin.shell: ip addr show
-      register: network_interfaces_output
-      delegate_to: localhost
-
-    - name: Fetch running processes
-      ansible.builtin.shell: ps aux
-      register: running_processes_output
       delegate_to: localhost
