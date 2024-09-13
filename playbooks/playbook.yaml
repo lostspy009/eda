@@ -10,21 +10,27 @@
         server_ip: "{{ ansible_default_ipv4.address }}"
         cpu_cores: "{{ ansible_processor_vcpus }}"
         memory_gb: "{{ ansible_memtotal_mb / 1024 }}"
+      delegate_to: localhost
+
     - name: Fetch disk space
       ansible.builtin.shell: df -h
       register: disk_space_output
+      delegate_to: localhost
 
     - name: Fetch system load
       ansible.builtin.shell: uptime
       register: system_load_output
+      delegate_to: localhost
 
     - name: Fetch network interfaces
       ansible.builtin.shell: ip addr show
       register: network_interfaces_output
+      delegate_to: localhost
 
     - name: Fetch running processes
       ansible.builtin.shell: ps aux
       register: running_processes_output
+      delegate_to: localhost
 
     - name: Print all data
       debug:
@@ -33,3 +39,4 @@
           - "{{ system_load_output.stdout_lines }}"
           - "{{ network_interfaces_output.stdout_lines }}"
           - "{{ running_processes_output.stdout_lines }}"
+      delegate_to: localhost
