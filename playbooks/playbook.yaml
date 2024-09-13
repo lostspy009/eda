@@ -1,11 +1,11 @@
 ---
 - name: Sample Playbook for Hello World
   hosts: localhost
+  gather_facts: true
   tasks:
     - name: Print a message
       debug:
         msg: "Hello World from Ansible Event Driven Automation"
-        customer_name: "{{ customer_name }}"
         current_time: "{{ ansible_date_time.iso8601 }}"
         server_ip: "{{ ansible_default_ipv4.address }}"
         cpu_cores: "{{ ansible_processor_vcpus }}"
