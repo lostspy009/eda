@@ -3,7 +3,7 @@
   sources:
     - name: "eda tick"
       ansible.eda.tick:
-        deploy: 5
+        deploy: 60
   rules:
     - name: "Say Hello"
       condition: true
